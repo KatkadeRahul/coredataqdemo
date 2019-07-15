@@ -11,6 +11,5 @@
 @interface ViewController : UIViewController
 
 @property (strong) NSManagedObjectModel *fullvideoList;
--(void)saveLocalData:(NSMutableArray *)saveArray;
 @end
 

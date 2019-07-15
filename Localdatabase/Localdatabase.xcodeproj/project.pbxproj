@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82397E1022DC74B2006C36B0 /* serialkeydetailvc.m in Sources */ = {isa = PBXBuildFile; fileRef = 82397E0F22DC74B2006C36B0 /* serialkeydetailvc.m */; };
+		82397E1622DC74C7006C36B0 /* firstpageoffullvideovc.m in Sources */ = {isa = PBXBuildFile; fileRef = 82397E1322DC74C6006C36B0 /* firstpageoffullvideovc.m */; };
+		82397E1722DC74C7006C36B0 /* fullvideovc.m in Sources */ = {isa = PBXBuildFile; fileRef = 82397E1422DC74C6006C36B0 /* fullvideovc.m */; };
+		82397E1A22DC78E0006C36B0 /* dashboardcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82397E1922DC78E0006C36B0 /* dashboardcell.m */; };
 		82724DD422D74F540080EEFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82724DD322D74F540080EEFE /* AppDelegate.m */; };
 		82724DD722D74F540080EEFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82724DD622D74F540080EEFE /* ViewController.m */; };
 		82724DDA22D74F540080EEFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82724DD822D74F540080EEFE /* Main.storyboard */; };
@@ -19,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82397E0F22DC74B2006C36B0 /* serialkeydetailvc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serialkeydetailvc.m; sourceTree = "<group>"; };
+		82397E1122DC74C6006C36B0 /* serialkeydetailvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialkeydetailvc.h; sourceTree = "<group>"; };
+		82397E1222DC74C6006C36B0 /* firstpageoffullvideovc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = firstpageoffullvideovc.h; sourceTree = "<group>"; };
+		82397E1322DC74C6006C36B0 /* firstpageoffullvideovc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firstpageoffullvideovc.m; sourceTree = "<group>"; };
+		82397E1422DC74C6006C36B0 /* fullvideovc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fullvideovc.m; sourceTree = "<group>"; };
+		82397E1522DC74C6006C36B0 /* fullvideovc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fullvideovc.h; sourceTree = "<group>"; };
+		82397E1822DC78E0006C36B0 /* dashboardcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dashboardcell.h; sourceTree = "<group>"; };
+		82397E1922DC78E0006C36B0 /* dashboardcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dashboardcell.m; sourceTree = "<group>"; };
 		82724DCF22D74F540080EEFE /* Localdatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Localdatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82724DD222D74F540080EEFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82724DD322D74F540080EEFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,10 +82,18 @@
 			children = (
 				82B09C7A22D8936300D0F118 /* Reachability.h */,
 				82B09C7B22D8936400D0F118 /* Reachability.m */,
+				82397E1822DC78E0006C36B0 /* dashboardcell.h */,
+				82397E1922DC78E0006C36B0 /* dashboardcell.m */,
 				82724DD222D74F540080EEFE /* AppDelegate.h */,
 				82724DD322D74F540080EEFE /* AppDelegate.m */,
 				82724DD522D74F540080EEFE /* ViewController.h */,
 				82724DD622D74F540080EEFE /* ViewController.m */,
+				82397E1122DC74C6006C36B0 /* serialkeydetailvc.h */,
+				82397E0F22DC74B2006C36B0 /* serialkeydetailvc.m */,
+				82397E1222DC74C6006C36B0 /* firstpageoffullvideovc.h */,
+				82397E1322DC74C6006C36B0 /* firstpageoffullvideovc.m */,
+				82397E1522DC74C6006C36B0 /* fullvideovc.h */,
+				82397E1422DC74C6006C36B0 /* fullvideovc.m */,
 				82724DD822D74F540080EEFE /* Main.storyboard */,
 				82724DDB22D74F7C0080EEFE /* Assets.xcassets */,
 				82724DDD22D74F7C0080EEFE /* LaunchScreen.storyboard */,
@@ -164,8 +184,12 @@
 				82724DD722D74F540080EEFE /* ViewController.m in Sources */,
 				82724DF022D750690080EEFE /* DataModel.xcdatamodeld in Sources */,
 				82724DE222D74F7C0080EEFE /* main.m in Sources */,
+				82397E1722DC74C7006C36B0 /* fullvideovc.m in Sources */,
+				82397E1022DC74B2006C36B0 /* serialkeydetailvc.m in Sources */,
 				82724DD422D74F540080EEFE /* AppDelegate.m in Sources */,
 				82B09C7C22D8936400D0F118 /* Reachability.m in Sources */,
+				82397E1A22DC78E0006C36B0 /* dashboardcell.m in Sources */,
+				82397E1622DC74C7006C36B0 /* firstpageoffullvideovc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
