@@ -146,38 +146,7 @@
 				[plannamearray addObject:@{@"package" : [dic objectForKey:@"package"], @"activation_date": [dic objectForKey:@"activation_date"],@"expiration_date": [dic objectForKey:@"expiration_date"], @"serial_key": [dic objectForKey:@"serial_key"]}];
 			}
 
-					//If net available clear all data from core
-				NSManagedObjectContext *context = [self managedObjectContext];
-
-				for (int i=0; i<plannamearray.count; i++) {
-					
-					NSString *activation_date=[NSString stringWithFormat:@"%@", [[plannamearray objectAtIndex:i]objectForKey:@"activation_date"]];
-					NSString *expiration_date=[NSString stringWithFormat:@"%@", [[plannamearray objectAtIndex:i]objectForKey:@"expiration_date"]];
-					NSString *serial_key=[NSString stringWithFormat:@"%@",[[plannamearray objectAtIndex:i]objectForKey:@"serial_key"]];
-					NSLog(@"Key value==%@",serial_key);
-					NSString *package=[NSString stringWithFormat:@"%@", [[plannamearray objectAtIndex:i]objectForKey:@"package"]];
-			    
-                    self.device = [NSEntityDescription insertNewObjectForEntityForName:@"SerialEntity" inManagedObjectContext:context];
-					[self.device setValue:activation_date forKey:@"activation_date"];
-					[self.device setValue:expiration_date forKey:@"expiration_date"];
-					[self.device setValue:serial_key forKey:@"serial_key"];
-					[self.device setValue:package forKey:@"package"];
-                    
-                    
-                    NSError *error = nil;
-                    if (![context save:&error]) {
-                        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-                    }
-				}
-			
-			
-			NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-			NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SerialEntity"];
-			DBArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-			NSLog(@"Local DB Vlue==%@",DBArray);
-				
-				
-				
+            [self saveLocalData:plannamearray];
 			}
 			
 			
@@ -203,6 +172,54 @@
 	}
     
 }
+
+
+-(void)saveLocalData:(NSMutableArray *)saveArray{
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    for (int i=0; i<saveArray.count; i++) {
+        
+        NSString *activation_date=[NSString stringWithFormat:@"%@", [[saveArray objectAtIndex:i]objectForKey:@"activation_date"]];
+        NSString *expiration_date=[NSString stringWithFormat:@"%@", [[saveArray objectAtIndex:i]objectForKey:@"expiration_date"]];
+        NSString *serial_key=[NSString stringWithFormat:@"%@",[[saveArray objectAtIndex:i]objectForKey:@"serial_key"]];
+        NSLog(@"Key value==%@",serial_key);
+        NSString *package=[NSString stringWithFormat:@"%@", [[saveArray objectAtIndex:i]objectForKey:@"package"]];
+        
+        self.device = [NSEntityDescription insertNewObjectForEntityForName:@"SerialEntity" inManagedObjectContext:context];
+        
+        [self.device setValue:activation_date forKey:@"activation_date"];
+        [self.device setValue:expiration_date forKey:@"expiration_date"];
+        [self.device setValue:serial_key forKey:@"serial_key"];
+        [self.device setValue:package forKey:@"package"];
+
+        NSError *error = nil;
+        if (![context save:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }else{
+            NSLog(@"Save => %@",_device);
+        }
+        self.device = nil;
+    }
+     [self displayOffilenData];
+}
+
+-(void)displayOffilenData{
+    
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SerialEntity"];
+//     DBArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+//
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SerialEntity"];
+    
+    DBArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+   // [self.tableView reloadData];
+     NSLog(@"Local DB Vlue==%@",DBArray);
+    
+
+}
+
 
 //-(void)saveDatainDB(NSMutableArray *)serverdata{
 //

@@ -76,6 +76,8 @@
 	}
 	NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
 											   stringByAppendingPathComponent: @"DataModel.sqlite"]];
+    
+    NSLog(@"storeUrl === %@",storeUrl);
 	NSError *error = nil;
 	persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
 								  initWithManagedObjectModel:[self managedObjectModel]];
