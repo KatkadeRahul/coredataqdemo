@@ -31,8 +31,8 @@
 	
 	
 	myarrray = [NSMutableArray arrayWithObjects:@"First", @"Second", nil];
-
-	[self getdetails:@"3@Main_Videos-p"];
+[self displayOffilenData];
+	//[self getdetails:@"3@Main_Videos-p"];
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -101,19 +101,15 @@
 	
 	if (data ==nil)
 	{
-		
 		UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Connection error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
 		[self presentViewController:alert animated:YES completion:nil];
 		[self performSelector:@selector(dismissAlertView:) withObject:alert afterDelay:2];
-		
 		[[UIApplication sharedApplication] endIgnoringInteractionEvents];
 		
 	}
 	else
 	{
 		NSDictionary *dicAllNetworks = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-		
-		
 		NSLog(@"Serial Key Details =%@",dicAllNetworks);
 		NSString *status1=[NSString stringWithFormat:@"%@",[dicAllNetworks objectForKey:@"success"]];
 		
@@ -176,10 +172,11 @@
 
 -(void)saveLocalData:(NSMutableArray *)saveArray{
     
-    NSManagedObjectContext *context = [self managedObjectContext];
+   
     
     for (int i=0; i<saveArray.count; i++) {
         
+         NSManagedObjectContext *context = [self managedObjectContext];
         NSString *activation_date=[NSString stringWithFormat:@"%@", [[saveArray objectAtIndex:i]objectForKey:@"activation_date"]];
         NSString *expiration_date=[NSString stringWithFormat:@"%@", [[saveArray objectAtIndex:i]objectForKey:@"expiration_date"]];
         NSString *serial_key=[NSString stringWithFormat:@"%@",[[saveArray objectAtIndex:i]objectForKey:@"serial_key"]];
@@ -212,11 +209,21 @@
 //
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SerialEntity"];
-    
     DBArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
    // [self.tableView reloadData];
      NSLog(@"Local DB Vlue==%@",DBArray);
     
+    for (int i = 0; i<DBArray.count; i++) {
+        
+        self.device = [DBArray objectAtIndex:i];
+        NSLog(@"%@",[_device valueForKey:@"activation_date"]);
+         NSLog(@"%@",[_device valueForKey:@"expiration_date"]);
+         NSLog(@"%@",[_device valueForKey:@"serial_key"]);
+         NSLog(@"%@",[_device valueForKey:@"package"]);
+        
+         NSLog(@"********************************");
+       
+    }
 
 }
 
