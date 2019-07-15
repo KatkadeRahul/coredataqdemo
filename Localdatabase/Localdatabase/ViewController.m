@@ -32,6 +32,8 @@
 	
 	myarrray = [NSMutableArray arrayWithObjects:@"First", @"Second", nil];
 [self displayOffilenData];
+    
+    [self deleteAllObjects:@"SerialEntity"];
 	//[self getdetails:@"3@Main_Videos-p"];
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -226,6 +228,27 @@
     }
 
 }
+
+- (void) deleteAllObjects: (NSString *) entityDescription  {
+     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (NSManagedObject *managedObject in items) {
+        [managedObjectContext deleteObject:managedObject];
+        NSLog(@"%@ object deleted",entityDescription);
+    }
+    if (![managedObjectContext save:&error]) {
+         NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
+    }
+    [self displayOffilenData];
+}
+
+
 
 
 //-(void)saveDatainDB(NSMutableArray *)serverdata{
